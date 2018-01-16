@@ -1,2 +1,151 @@
 ### 1）lua 的变量的声明
- local names = '12' 
+ local names = '12'  // 声明局部变量 names
+gb = require('game') // 引入外部模块
+
+print(fuck_name) -- 导入第三方模块的方式开发 
+a = 5             //设置全局变量
+
+-- 定义一个lua函数
+function fuck()
+  print("This is fuck lua")
+  print(c,a) --变量的作用域
+end
+
+--kill the man
+function kill(name)
+  
+  if name ~= 'fj' then
+    return true,name
+  end
+  
+  return false,name
+  
+end -- 行尾的添加的方式，读写外部文件
+
+-- lua 读写文件的操作
+function readfile()
+  local f = assert(io.open('mengll.txt','a'))
+  f:write("the world is so big ,i want to see !")  --断言的方式，管理文件的读写操作
+  f.close()
+end
+
+local function main()
+    print(123)
+    b = 1
+    local c = 34
+    print(b)
+    print(type(2.233))
+    
+    tab1 = { key1 = "val1", key2 = "val2", "val3" }  --没有键值的迭代数据对象
+    
+    for k,v in pairs(tab1) do
+        print(k .."--".. v)
+    end
+    
+    
+    if true then
+      print("This is True!")
+    end 
+     
+    --获取当前数据对象的值
+    local x = 1
+    while x < 10 do
+        x = x + 1
+        print(x)
+    end
+    
+    fuck()
+    
+    if 1 ~= 1 then
+      print("This is false")
+    end
+    
+    -- 字典类型
+    kkl = {}
+    kkl['name'] = 'mengll'
+    
+    print(kkl.name)
+    
+    --创建测试文档的管理的管理的方式和方法
+   local is_kill ,name = kill('mengll') 
+   print(is_kill,name)
+   
+   --输出当前文件的管理的内容
+   local mk = 5
+   if mk > 2 and mk <4 then
+      print("mk is so little that is not bigger than 4")
+   elseif mk >4 then
+      print("mk is bigger than 5")
+   end
+   
+   num = 0
+   -- 重复的数据便利
+  for i=1,20,2 do
+    print(i)
+  end
+  
+  --重复的数据的操作的管理的内容
+  yp = {
+    1,
+    3,
+    4,
+    5
+  }
+  
+  print(#yp)
+ 
+   for j =1,#yp do
+        print(yp[j])
+   end
+   
+  local gameconfig = {
+        audoiconfig ={
+           isopen_music = false
+        },
+  } 
+     
+   print(gameconfig.audoiconfig.isopen_music)
+   
+   local age = '23'
+   local cf = tonumber(age) --转化当前 内容
+   print(type(cf))
+  
+  -- 完成是否有攻击特效，完成数据格式变化
+   
+  readfile()
+  
+  -- 对比两种便利的方式，是否一致 导入对象
+  print(gb.name)
+  gb:run()  -- 对象的访问方式
+  thj:run()
+
+end
+
+-- 简单完成项目
+
+main()
+
+
+-- 模块的方式
+fuck_name = 'fj-jn-jb' -- 
+
+local gameconfig = {age = 24}
+
+gameconfig.name = 'fj---->>>jb'
+
+function gameconfig:fuck()
+  self.age = 23
+end
+
+function gameconfig:run()
+  print("T your age is ",self.age)
+end
+
+-- 引入传值的方式\ 平均每天100 w的流水
+  
+  thj = setmetatable({},{__index = gameconfig})
+ 
+  print(thj.age)
+  thj:run()
+
+return gameconfig

@@ -27,3 +27,25 @@ coroutine.resume(co) 启动协程
 
 3）yeild的作用使用，当前的程序，挂起再次使，可恢复执行的实现
 
+--协同程序的挂起的操作
+  function show()
+          return coroutine.yield(2)
+  end 
+  
+  
+  
+--1)创建协同程序
+co = coroutine.create(
+    function ()
+    
+        print(23)
+        local b = show() -- 接受传入的值
+        print(b)
+    end
+)
+
+
+local p,v = coroutine.resume(co) -- 执行协程，程序
+
+print(p,v)
+coroutine.resume(co,'世界那么大')  -- 恢复程序

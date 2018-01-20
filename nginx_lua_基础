@@ -1,0 +1,60 @@
+1）nginx_redis 的链接操作
+
+local redis  = require "resty.redis " --引入redis包
+
+local red = redis:new() --实例化redis
+red:set_timeout(1000)
+
+local ip = "127.0.0.1"
+local port = "6379"
+
+local ok,err = red:connect(ip,port) -- 链接redis
+
+if not ok then
+        ngx.say("redis connect error")
+end
+
+red:set("mengll",2345)
+local age = red:get("mengll")
+ngx.say(age)
+
+ngx.say("headers begin", "<br/>")
+ngx.say("Host : ", headers["Host"], "<br/>")
+ngx.say("user-agent : ", headers["user-agent"], "<br/>")
+ngx.say("user-agent : ", headers.user_agent, "<br/>")
+
+for k,v in pairs(headers) do
+  if type(v) == "table" then
+    ngx.say(k, " : ", table.concat(v, ","), "<br/>")
+  else
+    ngx.say(k, " : ", v, "<br/>")
+  end
+end
+  ngx.say("headers end", "<br/>")
+  ngx.say("<br/>")
+end
+
+2)nginx 中声明变量，在lua中的使用
+server {
+
+        listen 80;
+        server_name _;
+
+        location /lua {
+                        default_type 'text/html';
+                        #content_by_lua 'ngx.say("mengll hello world")';
+                        set $a $1;
+                        set $b $host;
+                        set $meng fj;
+                        lua_code_cache off; #使用关闭不用每次都重启nginx
+                        content_by_lua_file /usr/example/lua/test.lua; --直接指定解析文件
+                        echo_after_body "ngx.var.b $b";
+                }
+}
+
+nginx 的http模块配置
+    lua_package_path "/usr/example/lualib/?.lua;;"; # ;;表示默认搜索路径，
+
+    include       lua.conf;
+
+

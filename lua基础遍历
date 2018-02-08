@@ -1,0 +1,51 @@
+jk = [[ 
+    时间那么大，我们想去看下
+    但是我内心是那么大担心，不知道如何是好了
+]] ---多行原格式输出
+
+--[[
+   过程化的批量注释的过程
+]]--
+
+print(jk)
+
+kl = "dask,dladd"
+print(#kl)
+
+-- 存放的都是地址的值
+
+function foo()
+  return 8/9
+
+end
+
+print(foo())
+
+ad = {}
+ad['d'] = "fa"
+ad['f'] = "asdf"
+ad[1] = "fj"
+
+--确实在骗自己
+print(ad)
+print(ad.d)
+
+--遍历对象中的全部内容
+for k,v in pairs(ad) do
+  print("全量遍历" .. k .."----" .. v)
+end
+
+
+print("----------ipairs 遍历的是键为整对象中的额正想变量")
+--lua中的键是从1开始的，不要忘记哦
+for k,v in ipairs(ad) do
+    print(k,v)
+end
+
+---遍历当前的对象
+function ad:show()
+    print("This is ad show function!")
+end
+
+--调用展示的放啊
+ad.show(self)

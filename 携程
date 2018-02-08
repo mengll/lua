@@ -49,3 +49,21 @@ local p,v = coroutine.resume(co) -- 执行协程，程序
 
 print(p,v)
 coroutine.resume(co,'世界那么大')  -- 恢复程序
+-------------------------------------------------------------------------------------------------
+--use the coroutine in lua
+co = coroutine.create(
+   function(a) 
+        print(a)
+       local c = coroutine.yield(a,34) -- 协程的返回当前的数据产出
+       print(c)
+   end
+)
+
+print(coroutine.status(co))
+
+asa,ca,m = coroutine.resume(co,1)
+print(asa,ca,m)
+coroutine.resume(co,311)   ---恢复到之前运行的程序
+
+
+

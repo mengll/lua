@@ -1,0 +1,41 @@
+协程
+
+	-- 创建一个协程
+	co = coroutine.create(function () print("hi, I am co") end)
+	print('status of co:' .. coroutine.status(co)) -- 查看协程的运行状态
+	coroutine.resume(co)	--启动（或者是恢复）协程
+
+	print('status after resume:' .. coroutine.status(co))
+	print(coroutine.resume(co))	--已经结束（dead）的协程，无法resume，返回false
+
+
+-- 使用yield暂停协程
+	co = coroutine.create(function ()
+        for i=1,10 do
+            print("co", i)
+            coroutine.yield()
+        end
+        end)
+
+
+	--可以在resume时向协程传递参数
+	co = coroutine.create(function (a,b,c)
+        print("co with parameters:", a,b,c)
+        end)
+    coroutine.resume(co, 2, 3, 6)    --> co  1  2  3
+
+
+	--yield可以接收resume传入的参数，同时将执行结果通过resume传出
+	co = coroutine.create(function (a,b)
+        local c = a * b
+		coroutine.yield(c, a - b)
+        end)
+    print(coroutine.resume(co, 20, 10))  --> true  30  10
+
+
+	--协程结束时的返回值也会通过resume传出
+	co = coroutine.create(function (x)
+        local var = x * 3
+		return 6, 7, var
+        end)
+    print(coroutine.resume(co, 3))   --> true  6  7  9

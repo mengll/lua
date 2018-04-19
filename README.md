@@ -6,4 +6,8 @@ lua学习笔记
  loadfile("file") 只是单纯的加载  文件但是不会运行
  dofile("file")  加载文件并运行，可重复的加载
  require("file") 只加载一次，并运行
+ 
+ll = os.time()
+print(ll) 返回当前的时间戳
+print(os.date("%Y-%m-%d",t))  -- lua 中的时间格式化 格式化时间输出
 ```

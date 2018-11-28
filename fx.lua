@@ -16,6 +16,13 @@ ta.__index = function(slef,v) -- 当前查找的对象 self = tb v = fk 查询�
     print(slef.page,v)
     return '12' -- 不管调用的是什么内容返回的都是‘12’
   end
+  
+  -- 更新源数据的时候操作 
+ta.__newindex = function(self,k,v)
+    print("设置最新的值=》",k,v)
+  end
+  
 tb = setmetatable(tb,ta)
 
 print('ad=>',tb.fk) --12
+tb.fk = "34"

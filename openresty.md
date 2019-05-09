@@ -7,9 +7,9 @@ local producer = require "resty.kafka.producer"
 local resty_uuid = require "resty.uuid"
 
 local broker_list = {
-    {host = "172.18.253.195", port = 9092 },
-    { host = "172.18.254.24", port = 9092 },
-    { host = "172.18.254.23", port = 9092 },
+    {host = "172", port = 9092 },
+    { host = "24", port = 9092 },
+    { host = "172", port = 9092 },
 }
 
 --读取上报的信息体的内容转化

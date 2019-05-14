@@ -11,3 +11,5 @@ ll = os.time()
 print(ll) 返回当前的时间戳
 print(os.date("%Y-%m-%d",t))  -- lua 中的时间格式化 格式化时间输出
 ```
+### openresty 生成证书的请求
+curl  -v -s -k 'https://api.weixin.qq.com/cgi-bin/token?xxxx' 

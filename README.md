@@ -13,3 +13,10 @@ print(os.date("%Y-%m-%d",t))  -- lua 中的时间格式化 格式化时间输出
 ```
 ### openresty 生成证书的请求
 curl  -v -s -k 'https://api.weixin.qq.com/cgi-bin/token?xxxx' 
+
+### openresty kafka 自动分区
+
+local ok, err = bp:send("ocpc_log", key, message)
+
+当key 有值的时候数据会分配到指定的分区
+当key 为 nil 的时候会自动的分区

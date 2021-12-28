@@ -20,3 +20,18 @@ local ok, err = bp:send("ocpc_log", key, message)
 
 当key 有值的时候数据会分配到指定的分区
 当key 为 nil 的时候会自动的分区
+
+
+### luajit在Mac系统下编译的时候需要制定目标系统的版本
+export MACOSX_DEPLOYMENT_TARGET=12.1
+
+源码安装 
+
+```
+-- 编译的参数地址
+make PREFIX=/path/to/luajit
+
+-- 安装的参数地址
+make install PREFIX=/path/to/luajit
+
+```
